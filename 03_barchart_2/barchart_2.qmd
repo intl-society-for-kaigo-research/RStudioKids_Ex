@@ -1,0 +1,41 @@
+---
+  title: "棒（ぼう）グラフの"
+---
+  
+01 の復習（ふくしゅう）です。お友達の好きな食べ物を調査しました。ここから棒（ぼう）グラフにします。
+
+```{r}
+library(ggplot2)
+dfKudamono <- read.csv("../kudamono.csv")
+ggplot2::ggplot(data = dfKudamono,
+                aes(x = くだもの)) +
+  ggplot2::geom_bar()
+```
+
+ここでは、この棒グラフの見た目をいろいろ変えてみましょう。「いろいろ」というぐらいなので、まずは色を変えましょう。
+
+```{r}
+ggplot2::ggplot(data = dfKudamono,
+                aes(x = くだもの)) +
+  ggplot2::geom_bar(fill = "blue")
+```
+
+つぎは、果物（くだもの）ごとに色を変えてみましょう。
+
+aes の中身もちょっと変わっています。
+
+```{r}
+ggplot2::ggplot(data = dfKudamono,
+                aes(x = くだもの, fill = くだもの)) +
+  ggplot2::geom_bar() +
+  scale_fill_manual(values = c("バナナ" = "yellow", "もも" = "pink", "ぶどう" = "purple", "りんご" = "red"))
+```
+
+線の太さを変えてみましょう。
+
+```{r}
+ggplot2::ggplot(data = dfKudamono,
+                aes(x = くだもの, fill = くだもの)) +
+  ggplot2::geom_bar(width = 0.5) +
+  scale_fill_manual(values = c("バナナ" = "yellow", "もも" = "pink", "ぶどう" = "purple", "りんご" = "red"))
+```
