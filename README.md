@@ -15,4 +15,7 @@ https://peatix.com/event/4489686/view
 | 8/6  | 折れ線グラフ |
 | 8/13 | なつやすみ |
 
+土曜朝 (6:30-9:00) にも自主学習会を行っています。
+
+https://saturdaymorning.connpass.com/
 
