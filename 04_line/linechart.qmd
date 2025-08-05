@@ -1,0 +1,80 @@
+---
+  title: "折れ線グラフと散布図"
+---
+
+## データの読み込み
+  
+まず、同じフォルダにある tenki.csv を読み込みます。
+
+このときに、dfTenki という変数に格納します。
+
+```{r}
+dfTenki <- read.csv("../tenki.csv")
+```
+
+上のように、バックティック 3 つと、{r} から始まって、バックティック 3 つで終わる部分を、コードチャンクといいます。ここに R のコードを書きます。
+
+実行するには、{r} の行の右にある、緑色のボタンをクリックします。
+
+RStudio の右上にある Environment タブを開いてみよう。dfTenki ができているでしょうか？
+
+dfTenki をダブルクリックしてみましょう。
+
+これは、2023年8月の東京の気温や湿度などです。
+
+Source: https://www.data.jma.go.jp/stats/etrn/view/daily_s1.php?prec_no=44&block_no=47662&year=2023&month=8&day=&view=a2
+
+## 折れ線グラフ
+
+ここに、下のコードを自分で書いてみよう。
+
+
+
+
+
+
+```{r}
+library(ggplot2)
+ggplot2::ggplot(data = dfTenki,
+                aes(x = 日, y = 平均気温)) +
+  ggplot2::geom_line()
+```
+
+棒グラフのときから変わった点は、
+
+* 棒グラフはデータが x だけだったのが、y を追加した。
+* geom_bar が geom_line に変えた。
+
+```{r}
+library(ggplot2)
+ggplot2::ggplot(data = dfTenki,
+                aes(x = 日, y = 平均気温)) +
+  ggplot2::geom_line() +
+  scale_y_continuous(limits = c(20,40),
+                   breaks = c(20,25,30,35,40))
+```
+
+## 散布図（さんぷず）
+
+次に、x軸を温度、y軸を湿度にした散布図（さんぷず）を描いてみましょう。
+
+ここに、下のコードを自分で書いてみよう。
+
+
+
+
+
+
+```{r}
+library(ggplot2)
+ggplot2::ggplot(data = dfTenki,
+                aes(x = 平均気温, y = 平均湿度)) +
+  ggplot2::geom_point()
+```
+
+* x と y に入れる列名を変えた
+* geom_line を geom_point に変えた
+
+
+最後に、Render ボタンを押してウェブページにしてみましょう。
+
